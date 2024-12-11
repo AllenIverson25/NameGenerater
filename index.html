@@ -23,7 +23,63 @@
         <header>
             <!-- place navbar here -->
         </header>
-        <main></main>
+        <main>
+<div class="container">
+    <!--Instructions-->
+    <div class="row text-center mb-4">
+        <div class="col-12">
+            <h1 class="">Fantasy Name Generator</h1>
+            <p class="">Fill out the form below my dog and generate your name!</p>
+        </div>
+    </div>
+     <form class="mb-4" id="fantasyForm">
+        <!--Get First Name-->
+<div class="mb-3">
+    <label for="firstName" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="firstName"placeholder="Enter your first name">
+</div>
+ <!--Get Last Name-->
+ <div class="mb-3">
+    <label for="lastName" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="lastName"placeholder="Enter your last name">
+</div>
+<!--Get Favorite Color-->
+<div class="mb-3">
+    <label for="favoriteColor" class="form-label">Favorite Color</label>
+    <input type="text" class="form-control" id="favoriteColor"placeholder="Enter your favorite color">
+</div>
+<!--Get Favorite Animal-->
+<div class="mb-3">
+    <label for="favoriteAnimal" class="form-label">Favorite Animal</label>
+    <input type="text" class="form-control" id="favoriteAnimal"placeholder="Enter your favorite animal">
+</div>
+<!--Get roadType-->
+<div class="mb-3">
+    <label for="roadType" class="form-label">Choose Road Type</label>
+    <select id="roadType" class="form-select">
+        <option selected>Select Road Type</option>
+        <option value="road">Road</option>
+        <option value="street">Street</option>
+        <option value="Court">Court</option>
+        <option value="avenue">Avenue</option>
+        <option value="other">Other</option>
+    </select>
+</div>
+<!--Submit button-->
+<button type="submit" class="btn btn-primary w-100">Generate Name</button>
+     </form>
+        <!--Form Section-->
+     
+        <!--Generated name output-->
+        <div class="result" id="result">
+            
+        </div>
+    
+ 
+
+</div>
+
+        </main>
         <footer>
             <!-- place footer here -->
         </footer>
