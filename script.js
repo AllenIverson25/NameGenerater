@@ -38,15 +38,17 @@ function genMiddleName(roadType, favoriteColor) {
 
 //generate Last Name 
 function genLastName(lastName) {
-    const lastLetter = lastName.charAt(lastName.length - 1)
-    if (lastLetter === 'a') {
-        return 'Shadow'
-    } else if (lastLetter === 'i') {
-        return 'Monkey'
-    } else if (lastLetter === 'o') {
-        return 'Saturn'
-    } else {
-        return 'Klompo'
+    const lastLetter = lastName.charAt(lastName.length - 1);
+    
+    switch (lastLetter) {
+        case 'a':
+            return 'Shadow';
+        case 'i':
+            return 'Monkey';
+        case 'o':
+            return 'Saturn';
+        default:
+            return 'Klompo';
     }
 }
 
@@ -92,3 +94,26 @@ function capitalize(input) {
     return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase()
 }
 
+// Update progress bar dynamically based on form input
+document.getElementById('fantasyForm').addEventListener('input', function () {
+    const fields = document.querySelectorAll('input, select');
+    let filledCount = 0;
+
+    // Count filled fields
+    fields.forEach(field => {
+        if (field.value.trim() !== '') {
+            filledCount++;
+        }
+    });
+
+    // Calculate progress percentage
+    const progress = (filledCount / fields.length) * 100;
+
+    // Update the progress bar width and text
+    const progressBar = document.querySelector('.progress-bar');
+    progressBar.style.width = `${progress}%`;
+    progressBar.textContent = `${Math.round(progress)}%`;
+
+    // Update aria-valuenow for accessibility
+    document.querySelector('.progress').setAttribute('aria-valuenow', progress);
+});
