@@ -12,9 +12,15 @@ function genFirstName(firstName) {
     if (firstLetter === 'a') {
         return 'Jeff'
     } else if (firstLetter === 'b') {
-        return 'Ryan'
+        return 'Doctor'
+    } else if (firstLetter === 'c') {
+        return 'Pluto'
+    } else if (firstLetter === 'd') {
+        return 'Elon'
+    } else if (firstLetter === 'e') {
+        return 'Tracy'
     } else {
-        return 'Julian'
+        return 'George'
     }
 
 }
@@ -38,9 +44,9 @@ function genLastName(lastName) {
     } else if (lastLetter === 'i') {
         return 'Monkey'
     } else if (lastLetter === 'o') {
-        return 'Klompo'
+        return 'Saturn'
     } else {
-        return 'Dog'
+        return 'Klompo'
     }
 }
 
@@ -68,19 +74,21 @@ function genFullName() {
 
 
     //Capitalize Name Variables when needed
-const capitalizedPrefix = capitalize(prefix)
-const capitalizedFirstName = capitalize(newFirstName)
-const capitalizedMiddleName = capitalize(middleName)
-const capitalizedLastName= capitalize(newLastName)
+    const capitalizedPrefix = capitalize(prefix)
+    const capitalizedFirstName = capitalize(newFirstName)
+    const capitalizedMiddleName = capitalize(middleName)
+    const capitalizedLastName = capitalize(newLastName)
 
 
     //Combine all of the Name variables in a new name
+    const fullName = `${capitalizedPrefix} ${capitalizedFirstName} ${capitalizedMiddleName} ${capitalizedLastName} ${suffix} `
 
     //Display the new name
-
+document.getElementById('result').textContent = fullName
 }
 
 //Capitilization Function
-function capitalize(input){
+function capitalize(input) {
     return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase()
 }
+
