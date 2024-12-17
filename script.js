@@ -39,7 +39,7 @@ function genMiddleName(roadType, favoriteColor) {
 //generate Last Name 
 function genLastName(lastName) {
     const lastLetter = lastName.charAt(lastName.length - 1);
-    
+
     switch (lastLetter) {
         case 'a':
             return 'Shadow';
@@ -47,6 +47,18 @@ function genLastName(lastName) {
             return 'Monkey';
         case 'o':
             return 'Saturn';
+        case 'b':
+            return 'Donkey Kong';
+        case 'c':
+            return 'Slavik';
+        case 'd':
+            return 'Drogen';
+        case 'n':
+            return 'Kalkporko';
+        case 'e':
+            return 'Teperdede';
+        case 'r':
+            return 'Donligo';
         default:
             return 'Klompo';
     }
@@ -86,7 +98,7 @@ function genFullName() {
     const fullName = `${capitalizedPrefix} ${capitalizedFirstName} ${capitalizedMiddleName} ${capitalizedLastName} ${suffix} `
 
     //Display the new name
-document.getElementById('result').textContent = fullName
+    document.getElementById('result').textContent = fullName
 }
 
 //Capitilization Function
