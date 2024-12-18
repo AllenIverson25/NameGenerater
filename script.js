@@ -1,109 +1,127 @@
-//Generate Prefix//
+// Generate Prefix
 function genPrefix(firstName) {
     if (firstName.length > 5) {
-        return 'The Great'
+        return 'Supreme Overlord';
+    } else if (firstName.length < 5) {
+        return 'The Great';
+    } else if (firstName.length === 3 ) {
+        return 'Bob the Eternal';
     } else {
-        return 'Master'
+        return 'Master';
     }
 }
-//generate first name
+
+// Generate First Name
 function genFirstName(firstName) {
-    const firstLetter = firstName.charAt(0).toLowerCase()
+    const firstLetter = firstName.charAt(0).toLowerCase();
+
     if (firstLetter === 'a') {
-        return 'Jeff'
+        return 'Jeff the Wizard';
     } else if (firstLetter === 'b') {
-        return 'Doctor'
+        return 'Doctor Cabbage';
     } else if (firstLetter === 'c') {
-        return 'Pluto'
-    } else if (firstLetter === 'd') {
-        return 'Elon'
-    } else if (firstLetter === 'e') {
-        return 'Tracy'
+        return 'Pluto the Bold';
+    } else if (firstLetter === 'd' || firstLetter === 'e') {
+        return 'Lord Fluffykins';
+    } else if (firstLetter === 'f' && firstName.includes('x')) {
+        return 'Sir Screechy';
+    } else if (['g', 'h', 'i'].includes(firstLetter)) {
+        return 'Captain MooMoo';
     } else {
-        return 'George'
+        return 'George the Unlikely';
     }
-
 }
 
-//generate middle name
+// Generate Middle Name
 function genMiddleName(roadType, favoriteColor) {
-    if (roadType === 'road') {
-        return `${favoriteColor}ridge` //Ex: Blueridge
-    } else if (roadType === 'street') {
-        return `${favoriteColor}son` //Ex: blueson
+    if (roadType === 'road' && favoriteColor.toLowerCase() === 'blue') {
+        return 'Bluedragon';
+    } else if (roadType === 'street' && favoriteColor.toLowerCase().includes('red')) {
+        return 'Firestorm';
+    } else if (roadType === 'lane' || roadType === 'avenue') {
+        return `${favoriteColor}pickle`; // Example: Greenpickle
+    } else if (roadType === 'boulevard') {
+        return `${favoriteColor}pants`; // Example: Pinkpants
     } else {
-        return `${favoriteColor}stone` //Ex: bluestone
+        return `${favoriteColor}potato`; // Default funny middle name
     }
 }
 
-//generate Last Name 
+// Generate Last Name
 function genLastName(lastName) {
-    const lastLetter = lastName.charAt(lastName.length - 1);
+    const lastLetter = lastName.charAt(lastName.length - 1).toLowerCase();
 
     switch (lastLetter) {
         case 'a':
-            return 'Shadow';
+            return 'The Alligator';
         case 'i':
-            return 'Monkey';
+            return 'Bananas';
         case 'o':
-            return 'Saturn';
+            return 'Saturnbutt';
         case 'b':
-            return 'Donkey Kong';
+            return 'Donkey Kongface';
         case 'c':
-            return 'Slavik';
+            return 'Slavikton';
         case 'd':
-            return 'Drogen';
+            return 'McDerp';
         case 'n':
-            return 'Kalkporko';
+            return 'Picklenator';
         case 'e':
-            return 'Teperdede';
+            return 'Teabags';
         case 'r':
-            return 'Donligo';
+            return 'Fartsniffer';
+        case 'y':
+            return 'Chickenpants';
         default:
-            return 'Klompo';
+            return 'Wiggles';
     }
 }
 
-
-//generate Suffix 
+// Generate Suffix
 function genSuffix(favoriteAnimal) {
-    return `of ${favoriteAnimal} clan.`
+    if (favoriteAnimal.toLowerCase() === 'cat' || favoriteAnimal.toLowerCase() === 'dog') {
+        return `of the Royal ${favoriteAnimal} Court`;
+    } else if (favoriteAnimal.toLowerCase().includes('dragon')) {
+        return `from the ${favoriteAnimal} Horde`;
+    } else if (favoriteAnimal.length > 5) {
+        return `of ${favoriteAnimal}-dom`;
+    } else {
+        return `of the ${favoriteAnimal} Clan`;
+    }
 }
 
-//Master Name building function 
+// Master Name Building Function
 function genFullName() {
-    //Get the Users Inputs from HTML Elements
-    const firstName = document.getElementById('firstName').value.trim()
-    const lastName = document.getElementById('lastName').value.trim()
-    const roadType = document.getElementById('roadType').value
-    const favoriteColor = document.getElementById('favoriteColor').value.trim()
-    const favoriteAnimal = document.getElementById('favoriteAnimal').value.trim()
+    // Get the user's inputs from HTML elements
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const roadType = document.getElementById('roadType').value;
+    const favoriteColor = document.getElementById('favoriteColor').value.trim();
+    const favoriteAnimal = document.getElementById('favoriteAnimal').value.trim();
 
-    //Run Name Generating Functions & store them in new variables
-    const prefix = genPrefix(firstName)
-    const newFirstName = genFirstName(firstName)
-    const middleName = genMiddleName(roadType, favoriteColor)
-    const newLastName = genLastName(lastName)
-    const suffix = genSuffix(favoriteAnimal)
+    // Run name generating functions & store them in new variables
+    const prefix = genPrefix(firstName);
+    const newFirstName = genFirstName(firstName);
+    const middleName = genMiddleName(roadType, favoriteColor);
+    const newLastName = genLastName(lastName);
+    const suffix = genSuffix(favoriteAnimal);
 
+    // Combine all of the name variables into a new name
+    const fullName = `${prefix} ${newFirstName} ${middleName} ${newLastName} ${suffix}`;
 
-    //Capitalize Name Variables when needed
-    const capitalizedPrefix = capitalize(prefix)
-    const capitalizedFirstName = capitalize(newFirstName)
-    const capitalizedMiddleName = capitalize(middleName)
-    const capitalizedLastName = capitalize(newLastName)
+    // Capitalize every first letter of the final name
+    const formattedFullName = capitalizeEveryWord(fullName);
 
-
-    //Combine all of the Name variables in a new name
-    const fullName = `${capitalizedPrefix} ${capitalizedFirstName} ${capitalizedMiddleName} ${capitalizedLastName} ${suffix} `
-
-    //Display the new name
-    document.getElementById('result').textContent = fullName
+    // Display the new name
+    document.getElementById('result').textContent = formattedFullName;
 }
 
-//Capitilization Function
-function capitalize(input) {
-    return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase()
+// Function to capitalize the first letter of every word
+function capitalizeEveryWord(input) {
+    return input
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
 }
 
 // Update progress bar dynamically based on form input
